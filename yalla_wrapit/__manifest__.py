@@ -9,6 +9,7 @@
         Includes BOQ integration and dynamic scope selection.
     """,
     'author': 'Lakehal Fatma Zahra',
+    'icon': 'static/description/icon.png',
     'depends': ['base', 'project', 'sale','hr','crm'],
     'data': [
         'security/yallawrap_security.xml',  # security access rules
