@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- =====================================================
+         EXTEND SALE ORDER FORM VIEW WITH YALLAWRAP FIELDS
+    ===================================================== -->
+    <record id="view_sale_order_form_yallawrap" model="ir.ui.view">
+        <field name="name">sale.order.form.yallawrap.fields</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Add YallaWrap totals inside "Other Info" page -->
+            <xpath expr="//notebook/page[@name='other_information']/group" position="inside">
+                <group string="YallaWrap Totals" class="o_group_box">
+
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="report_yallawrap_master_inspection">
+        <t t-call="web.external_layout">
+            <t t-set="doc" t-value="docs[0]"/>
+
+            <main style="font-family:Arial; font-size:12px; color:#2E2F5B;">
+
+                <!-- ================= HEADER ================= -->
+                <div style="text-align:center; padding:25px; background:#F4F6FA; border-bottom:5px solid #F28C28;">
+                    <h1>YallaWrap Master Inspection Report</h1>
+                </div>
+
+                <!-- ================= BASIC INFO ================= -->
+                <div style="padding:15px; margin-top:15px; background:#F9FAFC; border-left:5px solid #F28C28;">
+                    <h2>Basic Information</h2>
+                    <p><b>Reference:</b> <t t-esc="doc.report_name"/></p>
+                    <p><b>Prepared By:</b> <t t-esc="doc.prepared_by"/></p>
+                    <p><b>Location:</b> <t t-esc="doc.location"/></p>
+                    <p><b>Date:</b> <t t-esc="doc.conducted_on"/></p>
+                    <p><b>Client:</b> <t t-esc="doc.client_id.display_name"/></p>
+                    <p><b>Notes:</b> <t t-esc="doc.notes"/></p>
+                </div>
+
+                <t t-set="card">
+                    padding:15px;
+                    margin-top:15px;
+                    border-left:4px solid #F28C28;
+                    background:#fff;
+                    border-radius:8px;
+                </t>
+
+                <!-- ================= KITCHENS ================= -->
+                <t t-if="doc.kitchen_ids">
+                    <h2>Kitchens</h2>
+                    <t t-foreach="doc.kitchen_ids" t-as="k">
+                        <div t-att-style="card">
+                            <h3>Cabinet</h3>
+                            <p><b>Code:</b> <t t-esc="k.kitchen_cabinet_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="k.kitchen_cabinet_qty"/></p>
+                            <p><b>Meters:</b> <t t-esc="k.kitchen_cabinet_meters"/></p>
+                            <p><b>Type:</b> <t t-esc="k.kitchen_cabinet_type"/></p>
+                            <p><b>Width / Height:</b> <t t-esc="k.kitchen_cabinet_width"/> / <t t-esc="k.kitchen_cabinet_height"/></p>
+                            <p><b>Price:</b> <t t-esc="k.kitchen_cabinet_price"/></p>
+                            <p><b>Cleaning Needed:</b> <t t-esc="k.kitchen_cabinet_cleaning"/></p>
+                            <p><b>Peeled Off:</b> <t t-esc="k.kitchen_cabinet_peeled_off"/></p>
+                            <p><b>Hard Frame:</b> <t t-esc="k.kitchen_cabinet_hard_frame"/></p>
+                            <p><b>Free Handles:</b> <t t-esc="k.kitchen_cabinet_free_handles"/></p>
+                            <p><b>Change Handles Size:</b> <t t-esc="k.kitchen_cabinet_change_handles_size"/></p>
+                            <p><b>Custom Formula:</b> <t t-esc="k.formula_kitchen"/></p>
+
+                            <div>
+                                <t t-foreach="k.kitchen_attachment_ids" t-as="att">
+                                    <t t-if="att.id">
+                                        <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                             style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                    </t>
+                                </t>
+                            </div>
+
+                            <hr/>
+                            <h3>Countertop</h3>
+                            <p><b>Code:</b> <t t-esc="k.kitchen_countertop_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="k.kitchen_countertop_qty"/></p>
+                            <p><b>Meters:</b> <t t-esc="k.kitchen_countertop_meters"/></p>
+
+                            <p><b>Width / Height:</b> <t t-esc="k.kitchen_countertop_width"/> / <t t-esc="k.kitchen_countertop_height"/></p>
+                            <p><b>Price:</b> <t t-esc="k.kitchen_countertop_price"/></p>
+                            <p><b>Condition:</b> <t t-esc="k.kitchen_countertop_condition"/></p>
+                            <p><b>Condition Notes:</b> <t t-esc="k.kitchen_countertop_condition_notes"/></p>
+                            <p><b>Custom Formula:</b> <t t-esc="k.formula_countertop"/></p>
+
+                            <div>
+                                <t t-foreach="k.kitchen_countertop_attachment_ids" t-as="att">
+                                    <t t-if="att.id">
+                                        <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                             style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                    </t>
+                                </t>
+                            </div>
+
+                            <hr/>
+                            <h3>Backsplash</h3>
+                            <p><b>Code:</b> <t t-esc="k.backsplash_countertop_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="k.backsplash_countertop_qty"/></p>
+                            <p><b>Meters:</b> <t t-esc="k.backsplash_countertop_meters"/></p>
+
+                            <p><b>Width / Height:</b> <t t-esc="k.backsplash_countertop_width"/> / <t t-esc="k.backsplash_countertop_height"/></p>
+                            <p><b>Price:</b> <t t-esc="k.backsplash_countertop_price"/></p>
+                            <p><b>Condition:</b> <t t-esc="k.backsplash_wall"/></p>
+                            <p><b>Custom Formula:</b> <t t-esc="k.formula_backsplash"/></p>
+
+                            <div>
+                                <t t-foreach="k.backsplash_countertop_attachment_ids" t-as="att">
+                                    <t t-if="att.id">
+                                        <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                             style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+
+                <!-- ================= BATHROOMS ================= -->
+                <t t-if="doc.bathroom_ids">
+                    <h2>Bathrooms</h2>
+                    <t t-foreach="doc.bathroom_ids" t-as="b">
+                        <div t-att-style="card">
+                            <h3><t t-esc="b.name"/></h3>
+                            <p><b>Wall Code:</b> <t t-esc="b.wall_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="b.wall_qty"/></p>
+                            <p><b>Meters:</b> <t t-esc="b.wall_meters"/></p>
+                            <p><b>Type:</b> <t t-esc="b.wall_type"/></p>
+                            <p><b>Price:</b> <t t-esc="b.wall_price"/></p>
+                            <div>
+                                <t t-foreach="b.wall_attachment_ids" t-as="att">
+                                    <t t-if="att.id">
+                                        <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                             style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                    </t>
+                                </t>
+                            </div>
+                            <p><b>Custom Formula (Wall):</b> <t t-esc="b.formula_wall"/></p>
+
+                            <hr/>
+                            <p><b>Countertop Code:</b> <t t-esc="b.countertop_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="b.countertop_qty"/></p>
+                            <p><b>Meters:</b> <t t-esc="b.countertop_meters"/></p>
+                            <p><b>Width / Height:</b> <t t-esc="b.countertop_width"/> / <t t-esc="b.countertop_height"/></p>
+                            <p><b>Price:</b> <t t-esc="b.countertop_price"/></p>
+                            <p><b>Condition:</b> <t t-esc="b.countertop_condition"/></p>
+                            <p><b>Condition Notes:</b> <t t-esc="b.countertop_condition_notes"/></p>
+                            <p><b>Custom Formula:</b> <t t-esc="b.formula_countertop"/></p>
+
+                            <div>
+                                <t t-foreach="b.countertop_attachment_ids" t-as="att">
+                                    <t t-if="att.id">
+                                        <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                             style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                    </t>
+                                </t>
+                            </div>
+
+                            <hr/>
+                            <p><b>Cabinet Code:</b> <t t-esc="b.cabinet_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="b.cabinet_qty"/></p>
+                            <p><b>Meters:</b> <t t-esc="b.cabinet_meters"/></p>
+                            <p><b>Width / Height:</b> <t t-esc="b.cabinet_width"/> / <t t-esc="b.cabinet_height"/></p>
+                            <p><b>Price:</b> <t t-esc="b.cabinet_price"/></p>
+                            <p><b>Type:</b> <t t-esc="b.cabinet_type"/></p>
+                            <p><b>Custom Formula:</b> <t t-esc="b.formula_cabinet"/></p>
+
+                            <div>
+                                <t t-foreach="b.cabinet_attachment_ids" t-as="att">
+                                    <t t-if="att.id">
+                                        <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                             style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                    </t>
+                                </t>
+                            </div>
+
+                            <hr/>
+                            <p><b>Floor Code:</b> <t t-esc="b.floor_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="b.floor_qty"/></p>
+                            <p><b>Meters:</b> <t t-esc="b.floor_meters"/></p>
+                            <p><b>Custom Formula:</b> <t t-esc="b.formula_floor"/></p>
+
+                            <div>
+                                <t t-foreach="b.flooring_ids" t-as="f">
+                                    <t t-foreach="f.floor_attachment_ids" t-as="att">
+                                        <t t-if="att.id">
+                                            <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                                 style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                        </t>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+
+                <!-- ================= DOORS, WARDROBES, FLOORING, SKIRTING, WINDOW FRAMES ================= -->
+                <!-- Doors -->
+                <t t-if="doc.door_ids">
+                    <h2>Doors</h2>
+                    <t t-foreach="doc.door_ids" t-as="d">
+                        <div t-att-style="card">
+                            <p><b>Code:</b> <t t-esc="d.door_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="d.door_qty"/></p>
+                            <p><b>Width / Height:</b> <t t-esc="d.door_width"/> / <t t-esc="d.door_height"/></p>
+                            <p><b>Price:</b> <t t-esc="d.door_price"/></p>
+                            <p><b>Type:</b> <t t-esc="d.Type_of_doors_Multiple_choice"/></p>
+                            <p><b>Size:</b> <t t-esc="d.door_size"/></p>
+                            <p><b>Needs Scaffolding:</b> <t t-esc="d.needs_scaffolding_door"/></p>
+                            <p><b>Needs Cutting:</b> <t t-esc="d.needs_cutting_door"/></p>
+                            <p><b>Custom Formula:</b> <t t-esc="d.formula_door"/></p>
+
+                            <div>
+                                <t t-foreach="d.door_attachment_ids" t-as="att">
+                                    <t t-if="att.id">
+                                        <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                             style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+
+                <!-- Wardrobes -->
+                <t t-if="doc.wardrobe_ids">
+                    <h2>Wardrobes</h2>
+                    <t t-foreach="doc.wardrobe_ids" t-as="w">
+                        <div t-att-style="card">
+                            <p><b>Code:</b> <t t-esc="w.wardrobe_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="w.wardrobe_qty"/></p>
+                            <p><b>Width / Height:</b> <t t-esc="w.wardrobe_width"/> / <t t-esc="w.wardrobe_height"/></p>
+                            <p><b>Price:</b> <t t-esc="w.wardrobe_price"/></p>
+                            <p><b>Type of Shutter:</b> <t t-esc="w.Type_of_Shutter_Multiple_choice"/></p>
+                            <p><b>Shutter Height:</b> <t t-esc="w.shutter_height"/></p>
+                            <p><b>Needs Cutting:</b> <t t-esc="w.needs_cutting"/></p>
+                            <p><b>Custom Formula:</b> <t t-esc="w.formula_wordable"/></p>
+
+                            <div>
+                                <t t-foreach="w.wardrobe_attachment_ids" t-as="att">
+                                    <t t-if="att.id">
+                                        <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                             style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+
+                <!-- Flooring -->
+                <t t-if="doc.flooring_ids">
+                    <h2>Flooring</h2>
+                    <t t-foreach="doc.flooring_ids" t-as="f">
+                        <div t-att-style="card">
+                            <p><b>Code:</b> <t t-esc="f.floor_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="f.floor_qty"/></p>
+                            <p><b>Type:</b> <t t-esc="f.floor_type"/></p>
+                            <p><b>Meters:</b> <t t-esc="f.floor_meters"/></p>
+                            <p><b>Price:</b> <t t-esc="f.floor_price"/></p>
+
+                            <div>
+                                <t t-foreach="f.floor_attachment_ids" t-as="att">
+                                    <t t-if="att.id">
+                                        <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                             style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+
+                <!-- Skirting -->
+                <t t-if="doc.skirting_ids">
+                    <h2>Skirting</h2>
+                    <t t-foreach="doc.skirting_ids" t-as="s">
+                        <div t-att-style="card">
+                            <p><b>Code:</b> <t t-esc="s.skirting_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="s.skirting_qty"/></p>
+                            <p><b>Type:</b> <t t-esc="s.skirting_type"/></p>
+                            <p><b>Price:</b> <t t-esc="s.skirting_price"/></p>
+
+                            <div>
+                                <t t-foreach="s.skirting_attachment_ids" t-as="att">
+                                    <t t-if="att.id">
+                                        <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                             style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+
+                <!-- Window Frames -->
+                <t t-if="doc.window_frame_ids">
+                    <h2>Window Frames</h2>
+                    <t t-foreach="doc.window_frame_ids" t-as="w">
+                        <div t-att-style="card">
+                            <p><b>Code:</b> <t t-esc="w.window_frame_code.display_name"/></p>
+                            <p><b>Qty:</b> <t t-esc="w.window_frame_qty"/></p>
+                            <p><b>Width / Height:</b> <t t-esc="w.window_frame_width"/> / <t t-esc="w.window_frame_height"/></p>
+                            <p><b>Price:</b> <t t-esc="w.window_frame_price"/></p>
+
+                            <div>
+                                <t t-foreach="w.window_frame_attachment_ids" t-as="att">
+                                    <t t-if="att.id">
+                                        <img t-att-src="'/web/image/ir.attachment/' + str(att.id) + '/datas'"
+                                             style="width:90px;height:90px;margin:4px;border:1px solid #ddd;border-radius:6px;"/>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+
+            </main>
+        </t>
+    </template>
+
+    <!-- ================= REPORT ACTION ================= -->
+    <record id="action_yallawrap_master_inspection_report" model="ir.actions.report">
+        <field name="name">YallaWrap Master Inspection Report</field>
+        <field name="model">crm.lead</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">yallawrap_inspection.report_yallawrap_master_inspection</field>
+        <field name="report_file">yallawrap_inspection.report_yallawrap_master_inspection</field>
+        <field name="print_report_name">'Inspection_' + (object.report_name or '')</field>
+    </record>
+
+</odoo>

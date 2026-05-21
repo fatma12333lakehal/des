@@ -1,0 +1,79 @@
+<odoo>
+
+    <!-- =========================
+         TREE VIEW
+    ========================== -->
+    <record id="view_yallawrap_flooring_tree" model="ir.ui.view">
+        <field name="name">yallawrap.flooring.list</field>
+        <field name="model">yallawrap.flooring</field>
+        <field name="arch" type="xml">
+            <list string="Flooring">
+
+                <field name="type"/>
+                <field name="floor_code"/>
+                <field name="floor_price_type"/>
+                <field name="floor_qty"/>
+                <field name="floor_meters"/>
+                <field name="floor_price"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!-- =========================
+         FORM VIEW
+    ========================== -->
+    <record id="view_yallawrap_flooring_form" model="ir.ui.view">
+        <field name="name">yallawrap.flooring.form</field>
+        <field name="model">yallawrap.flooring</field>
+        <field name="arch" type="xml">
+            <form string="Flooring">
+                <sheet>
+
+                    <!-- HEADER -->
+
+                    <!-- MATERIAL -->
+                    <group string="Material">
+                        <group>
+                            <field name="floor_code"/>
+                            <field name="floor_price_type"/>
+                            <field name="floor_price" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="floor_qty"/>
+                            <field name="floor_meters"
+                                   invisible="floor_price_type != 'meter'"/>
+                        </group>
+                    </group>
+
+                    <!-- FORMULA -->
+                    <group string="BOQ Formula">
+                        <field name="formula_floor"
+                               placeholder="Example: floor_qty * floor_price"/>
+                    </group>
+
+                    <!-- ATTACHMENTS -->
+                    <group string="Attachments">
+                        <field name="floor_attachment_ids"
+                               widget="many2many_binary"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- =========================
+         ACTION
+    ========================== -->
+    <record id="action_yallawrap_flooring" model="ir.actions.act_window">
+        <field name="name">Flooring</field>
+        <field name="res_model">yallawrap.flooring</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+
+
+</odoo>
