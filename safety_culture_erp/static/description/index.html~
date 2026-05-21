@@ -2,201 +2,391 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Safety Culture - Odoo ERP Module</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Safety Culture ERP - Odoo Module</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-    body{
+
+    *{
         margin:0;
-        font-family: Arial, sans-serif;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family:Arial, sans-serif;
         background:#f4f7fb;
         color:#333;
+        line-height:1.6;
     }
 
-    /* ===== TOP COVER ===== */
-    .cover{
-        background: linear-gradient(135deg,#714B67,#875A7B);
+    /* =========================
+       TOP HERO SECTION
+    ========================== */
+
+    .hero{
+        background:linear-gradient(135deg,#714B67,#875A7B);
+        padding:90px 20px;
         text-align:center;
-        padding:70px 20px;
         color:white;
+        position:relative;
+        overflow:hidden;
     }
 
-    .icon-wrapper{
-        display:flex;
-        justify-content:center;
-        margin-bottom:18px;
+    .hero:before{
+        content:'';
+        position:absolute;
+        width:400px;
+        height:400px;
+        background:rgba(255,255,255,0.05);
+        border-radius:50%;
+        top:-150px;
+        right:-100px;
+    }
+
+    .hero:after{
+        content:'';
+        position:absolute;
+        width:300px;
+        height:300px;
+        background:rgba(255,255,255,0.04);
+        border-radius:50%;
+        bottom:-120px;
+        left:-100px;
+    }
+
+    .hero-content{
+        position:relative;
+        z-index:2;
     }
 
     .icon-box{
+        display:inline-block;
         background:white;
-        padding:12px;
-        border-radius:22px;
-        box-shadow:0 15px 30px rgba(0,0,0,0.25);
+        padding:14px;
+        border-radius:24px;
+        box-shadow:0 15px 35px rgba(0,0,0,0.25);
+        margin-bottom:25px;
     }
 
     .icon-box img{
-        width:120px;
-        height:120px;
-        border-radius:16px;
+        width:130px;
+        height:130px;
+        border-radius:18px;
+        display:block;
     }
 
-    .cover h1{
-        margin:0;
-        font-size:36px;
+    .hero h1{
+        font-size:42px;
+        margin-bottom:15px;
+        font-weight:700;
     }
 
-    .cover p{
-        max-width:900px;
-        margin:18px auto 0 auto;
-        font-size:16px;
-        line-height:1.8;
+    .line{
+        width:90px;
+        height:4px;
+        background:white;
+        margin:20px auto;
+        border-radius:10px;
+        opacity:0.8;
+    }
+
+    .hero p{
+        max-width:950px;
+        margin:auto;
+        font-size:17px;
+        line-height:1.9;
         opacity:0.95;
     }
 
     .badges{
-        margin-top:25px;
+        margin-top:30px;
     }
 
     .badge{
         display:inline-block;
-        background:rgba(255,255,255,0.18);
-        padding:7px 14px;
+        background:rgba(255,255,255,0.15);
+        padding:8px 16px;
         border-radius:25px;
-        font-size:12px;
-        margin:4px;
+        margin:5px;
+        font-size:13px;
+        backdrop-filter:blur(5px);
     }
 
-    /* ===== SECTION ===== */
+    /* =========================
+       SECTION
+    ========================== */
+
     .section{
-        max-width:1100px;
+        max-width:1150px;
         margin:auto;
-        padding:50px 20px;
+        padding:70px 20px;
     }
 
-    .section h2{
+    .section-title{
         text-align:center;
-        font-size:26px;
-        margin-bottom:10px;
+        margin-bottom:45px;
     }
 
-    .section p{
-        text-align:center;
-        margin-bottom:30px;
-        color:#555;
+    .section-title h2{
+        font-size:32px;
+        color:#714B67;
+        margin-bottom:12px;
     }
 
-    /* ===== CARD ===== */
+    .section-title p{
+        color:#666;
+        font-size:16px;
+    }
+
+    /* =========================
+       CARDS
+    ========================== */
+
+    .cards{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+        gap:20px;
+    }
+
     .card{
         background:white;
-        padding:20px;
-        margin-bottom:15px;
-        border-radius:12px;
-        box-shadow:0 2px 12px rgba(0,0,0,0.06);
+        border-radius:18px;
+        padding:25px;
+        box-shadow:0 4px 18px rgba(0,0,0,0.06);
         transition:0.3s;
     }
 
     .card:hover{
-        transform:translateY(-4px);
+        transform:translateY(-6px);
+    }
+
+    .card i{
+        font-size:28px;
+        color:#875A7B;
+        margin-bottom:15px;
     }
 
     .card h3{
-        margin:0 0 10px 0;
+        color:#714B67;
+        margin-bottom:12px;
+        font-size:20px;
+    }
+
+    .card p{
+        color:#555;
+        font-size:14px;
+        line-height:1.7;
+    }
+
+    /* =========================
+       FEATURES
+    ========================== */
+
+    .features{
+        background:white;
+        padding:70px 20px;
+    }
+
+    .feature-box{
+        max-width:1100px;
+        margin:auto;
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+        gap:25px;
+    }
+
+    .feature{
+        background:#f8f8fc;
+        border-left:5px solid #875A7B;
+        padding:22px;
+        border-radius:14px;
+    }
+
+    .feature h4{
+        margin-bottom:10px;
         color:#714B67;
         font-size:18px;
     }
 
-    /* ===== FOOTER ===== */
+    /* =========================
+       FOOTER
+    ========================== */
+
     footer{
-        text-align:center;
-        padding:20px;
-        background:#222;
+        background:#1f1f1f;
         color:white;
-        margin-top:40px;
+        text-align:center;
+        padding:25px;
+        margin-top:50px;
     }
+
 </style>
+
 </head>
 
 <body>
 
-<!-- ================= COVER ================= -->
-<div class="cover">
+<!-- ================= HERO ================= -->
 
-    <div class="icon-wrapper">
+<section class="hero">
+
+    <div class="hero-content">
+
         <div class="icon-box">
             <img src="icon.png" alt="Safety Culture ERP">
         </div>
+
+        <h1>🛡️ Safety Culture ERP</h1>
+
+        <div class="line"></div>
+
+        <p>
+            🚀 A modern and fully dynamic ERP solution designed for Sales Engineers,
+            combining BOQ-based estimation, intelligent project reporting,
+            and advanced engineering workflow management in one unified platform.
+            <br><br>
+            🇫🇷 Module ERP moderne destiné aux ingénieurs commerciaux,
+            intégrant le chiffrage BOQ, le reporting intelligent
+            et la gestion multi-métiers des projets.
+        </p>
+
+        <div class="badges">
+            <span class="badge">Odoo ERP</span>
+            <span class="badge">BOQ Management</span>
+            <span class="badge">Engineering</span>
+            <span class="badge">Reporting</span>
+            <span class="badge">Sales Engineers</span>
+        </div>
+
     </div>
 
-    <h1>🛡️ Safety Culture ERP</h1>
+</section>
 
-    <p>
-        🚀 A powerful ERP solution designed for Sales Engineers with BOQ-based estimation,
-        intelligent reporting, and multi-sector engineering management.
-        <br><br>
-        🇫🇷 Module ERP complet destiné aux ingénieurs commerciaux avec gestion BOQ,
-        reporting intelligent et pilotage multi-métiers.
-    </p>
+<!-- ================= BUSINESS DOMAINS ================= -->
 
-    <div class="badges">
-        <span class="badge">Odoo Module</span>
-        <span class="badge">BOQ System</span>
-        <span class="badge">Engineering ERP</span>
-        <span class="badge">Smart Reporting</span>
+<section class="section">
+
+    <div class="section-title">
+        <h2>🌐 Business Domains</h2>
+        <p>Complete engineering and project costing platform</p>
     </div>
 
-</div>
+    <div class="cards">
 
-<!-- ================= CONTENT ================= -->
-<div class="section">
+        <div class="card">
+            <i class="fa-solid fa-helmet-safety"></i>
+            <h3>Sales Engineering</h3>
+            <p>
+                Project lifecycle management, technical reporting,
+                quotation generation and engineering coordination.
+            </p>
+        </div>
 
-    <h2>🌐 Business Domains / Métiers</h2>
-    <p>All-in-one engineering & project management platform</p>
+        <div class="card">
+            <i class="fa-solid fa-kitchen-set"></i>
+            <h3>Kitchen Solutions</h3>
+            <p>
+                Custom kitchen design, BOQ calculation
+                and intelligent material selection.
+            </p>
+        </div>
 
-    <div class="card">
-        <h3>🏗️ Sales Engineering</h3>
-        <p>Project lifecycle management, technical reporting, client analysis and quotation generation.</p>
+        <div class="card">
+            <i class="fa-solid fa-bath"></i>
+            <h3>Bathroom Solutions</h3>
+            <p>
+                Sanitary system design, equipment specification
+                and project cost estimation.
+            </p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-door-open"></i>
+            <h3>Doors & Joinery</h3>
+            <p>
+                Joinery management, door specifications
+                and production tracking workflow.
+            </p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-border-all"></i>
+            <h3>Flooring</h3>
+            <p>
+                Surface calculation, flooring optimization
+                and material management system.
+            </p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-couch"></i>
+            <h3>Furniture</h3>
+            <p>
+                Custom furniture management,
+                catalogs and automated costing tools.
+            </p>
+        </div>
+
     </div>
 
-    <div class="card">
-        <h3>🍽️ Kitchen Solutions</h3>
-        <p>Custom kitchen design, BOQ calculation and material selection.</p>
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+    <div class="section-title">
+        <h2>⚙️ Advanced Features</h2>
+        <p>Powerful tools for engineering and reporting</p>
     </div>
 
-    <div class="card">
-        <h3>🚿 Bathroom Solutions</h3>
-        <p>Sanitary system design, equipment selection and cost estimation.</p>
+    <div class="feature-box">
+
+        <div class="feature">
+            <h4>📊 Dynamic Reporting</h4>
+            <p>
+                Generate intelligent inspection reports
+                and advanced project analytics in real time.
+            </p>
+        </div>
+
+        <div class="feature">
+            <h4>🧮 BOQ Integration</h4>
+            <p>
+                Automatic quantity calculation and
+                engineering cost estimation engine.
+            </p>
+        </div>
+
+        <div class="feature">
+            <h4>📁 Project Management</h4>
+            <p>
+                Centralized project workflow with
+                engineering follow-up and task monitoring.
+            </p>
+        </div>
+
+        <div class="feature">
+            <h4>📈 Smart Dashboards</h4>
+            <p>
+                Interactive dashboards and KPI tracking
+                for sales engineers and managers.
+            </p>
+        </div>
+
     </div>
 
-    <div class="card">
-        <h3>🚪 Doors & Joinery</h3>
-        <p>Door specification management and production tracking.</p>
-    </div>
-
-    <div class="card">
-        <h3>🪵 Flooring</h3>
-        <p>Surface calculation and material optimization.</p>
-    </div>
-
-    <div class="card">
-        <h3>🪑 Furniture</h3>
-        <p>Custom furniture design and catalog management system.</p>
-    </div>
-
-    <div class="card">
-        <h3>📊 BOQ Management</h3>
-        <p>Automatic quantity calculation and cost generation engine.</p>
-    </div>
-
-    <div class="card">
-        <h3>⚙️ Reporting System</h3>
-        <p>Interactive dashboards and performance analytics.</p>
-    </div>
-
-</div>
+</section>
 
 <!-- ================= FOOTER ================= -->
+
 <footer>
-    © 2026 Safety Culture - Odoo ERP Module | All Rights Reserved
+    © 2026 Safety Culture ERP - Odoo Module | All Rights Reserved
 </footer>
 
 </body>
