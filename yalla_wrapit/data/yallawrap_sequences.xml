@@ -1,0 +1,46 @@
+<odoo>
+    <!-- Bathroom sequence -->
+    <record id="seq_yallawrap_bathroom" model="ir.sequence">
+        <field name="name">Bathroom Sequence</field>
+        <field name="code">yallawrap.bathroom</field>
+        <field name="prefix"></field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- Kitchen sequence -->
+    <record id="seq_yallawrap_kitchen" model="ir.sequence">
+        <field name="name">Kitchen Sequence</field>
+        <field name="code">yallawrap.kitchen</field>
+        <field name="prefix"></field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- Wardrobe sequence -->
+    <record id="seq_yallawrap_wardrobe" model="ir.sequence">
+        <field name="name">Wardrobe Sequence</field>
+        <field name="code">yallawrap.wardrobe</field>
+        <field name="prefix"></field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- Room Item sequence -->
+    <record id="seq_yallawrap_room_item" model="ir.sequence">
+        <field name="name">Room Item Sequence</field>
+        <field name="code">yallawrap.room_item</field>
+        <field name="prefix"></field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- Summary sequence -->
+    <record id="seq_yallawrap_summary" model="ir.sequence">
+        <field name="name">Summary Sequence</field>
+        <field name="code">yallawrap.summary</field>
+        <field name="prefix"></field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>
