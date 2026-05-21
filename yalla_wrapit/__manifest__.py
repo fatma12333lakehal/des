@@ -26,7 +26,8 @@
 
 
     ],
-
+    "price": 1200.00,
+    "currency": "EUR",
     'installable': True,
     'application': True,
 }
