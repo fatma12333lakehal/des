@@ -1,5 +1,5 @@
 {
-    'name': 'yalla',
+    'name': 'Safety Culture ERP',
     'version': '1.0',
     'category': 'Project/Engineering',
     'summary': 'Dynamic Inspection Report for Sales Engineers',
