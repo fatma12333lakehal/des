@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<template id="report_saleorder_top_design" inherit_id="sale.report_saleorder_document">
+
+<xpath expr="//div[@class='page']" position="replace">
+
+<div class="page" style="font-family:Arial, Helvetica, sans-serif; color:#333;">
+
+<!-- ================= HEADER ================= -->
+<div style="text-align:center;margin-top:25px;margin-bottom:35px;">
+
+    <h1 style="
+        font-size:46px;
+        font-weight:900;
+        color:#0B3D91;
+        letter-spacing:4px;
+        margin-bottom:10px;">
+        QUOTATION
+    </h1>
+
+    <div style="
+        width:130px;
+        height:5px;
+        background:#FF7A00;
+        margin:0 auto;
+        border-radius:3px;">
+    </div>
+
+</div>
+
+
+<!-- ================= CUSTOMER INFO ================= -->
+<table style="width:100%;border-collapse:separate;border-spacing:10px;margin-bottom:35px;">
+
+<tr>
+
+<td style="
+    width:50%;
+    padding:18px;
+    background:#F7F9FD;
+    border-left:6px solid #0B3D91;
+    border-radius:10px;">
+
+    <p style="margin:0 0 6px 0;font-weight:700;color:#0B3D91;">Customer</p>
+    <p style="margin:0;"><t t-esc="doc.partner_id.name"/></p>
+
+</td>
+
+
+<td style="
+    width:50%;
+    padding:18px;
+    background:#F7F9FD;
+    border-left:6px solid #FF7A00;
+    border-radius:10px;">
+
+    <p style="margin:0 0 6px 0;font-weight:700;color:#0B3D91;">Date</p>
+    <p style="margin:0;"><t t-esc="doc.date_order"/></p>
+
+    <p style="margin:10px 0 6px 0;font-weight:700;color:#0B3D91;">Salesperson</p>
+    <p style="margin:0;"><t t-esc="doc.user_id.name"/></p>
+
+</td>
+
+</tr>
+
+</table>
+
+
+<!-- ================= PRODUCTS TABLE ================= -->
+<table style="
+width:100%;
+border-collapse:separate;
+border-spacing:0 12px;
+margin-bottom:40px;
+">
+
+<!-- HEADER -->
+<thead>
+<tr style="
+    background:#0B3D91;
+    color:white;
+    text-transform:uppercase;
+    font-size:13px;
+    letter-spacing:1px;">
+
+    <th style="padding:14px;border-radius:8px 0 0 8px;">Product</th>
+    <th style="padding:14px;">Description</th>
+    <th style="padding:14px;text-align:center;">Qty</th>
+    <th style="padding:14px;text-align:right;">Unit Price</th>
+    <th style="padding:14px;border-radius:0 8px 8px 0;text-align:right;">Subtotal</th>
+
+</tr>
+</thead>
+
+
+<!-- BODY -->
+<tbody>
+
+<t t-foreach="doc.order_line" t-as="line">
+
+<tr style="
+    background:#FFFFFF;
+    box-shadow:0 2px 6px rgba(0,0,0,0.06);
+    border-radius:10px;">
+
+    <!-- PRODUCT (MAIN SCOPE) -->
+    <td style="
+        padding:14px;
+        font-weight:700;
+        color:#0B3D91;
+        border-left:5px solid #0B3D91;">
+        <t t-esc="line.product_id.name"/>
+    </td>
+
+
+    <!-- DESCRIPTION (SUB SCOPE) -->
+    <td style="padding:14px;color:#666;font-size:13px;">
+        <div style="padding-left:10px;border-left:3px dashed #FF7A00;">
+            <t t-esc="line.name"/>
+        </div>
+    </td>
+
+
+    <!-- QTY -->
+    <td style="padding:14px;text-align:center;">
+        <span style="
+            background:#EAF0FF;
+            color:#0B3D91;
+            padding:4px 10px;
+            border-radius:20px;
+            font-weight:600;">
+            <t t-esc="line.product_uom_qty"/>
+        </span>
+    </td>
+
+
+    <!-- UNIT PRICE -->
+    <td style="padding:14px;text-align:right;color:#444;">
+        <t t-esc="line.price_unit"/>
+    </td>
+
+
+    <!-- SUBTOTAL (MAIN KPI) -->
+    <td style="
+        padding:14px;
+        text-align:right;
+        font-weight:800;
+        color:#FF7A00;
+        border-right:5px solid #FF7A00;">
+        <t t-esc="line.price_subtotal"/>
+    </td>
+
+</tr>
+
+</t>
+
+</tbody>
+
+</table>
+
+
+<!-- ================= TOTAL SECTION ================= -->
+<div style="
+width:42%;
+margin-left:auto;
+background:#F7F9FD;
+padding:22px;
+border-left:6px solid #FF7A00;
+border-radius:10px;
+font-size:14px;">
+
+<p style="margin:6px 0;">
+<strong style="color:#0B3D91;">Untaxed</strong> :
+<t t-esc="doc.amount_untaxed"/>
+</p>
+
+<p style="margin:6px 0;">
+<strong style="color:#0B3D91;">Taxes</strong> :
+<t t-esc="doc.amount_tax"/>
+</p>
+
+<p style="
+margin-top:12px;
+font-size:20px;
+font-weight:900;
+color:#FF7A00;">
+TOTAL :
+<t t-esc="doc.amount_total"/>
+</p>
+
+</div>
+
+</div>
+
+</xpath>
+
+</template>
+
+</odoo>
