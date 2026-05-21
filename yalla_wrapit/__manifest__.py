@@ -8,7 +8,7 @@
         Supports Kitchen, Bathroom, Wardrobes, Doors, Flooring, Furniture.
         Includes BOQ integration and dynamic scope selection.
     """,
-    'author': 'Your Name',
+    'author': 'Lakehal Fatma Zahra',
     'depends': ['base', 'project', 'sale','hr','crm'],
     'data': [
         'security/yallawrap_security.xml',  # security access rules
