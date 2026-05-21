@@ -27,7 +27,7 @@ class CrmLead(models.Model):
     skirting_ids = fields.One2many('skirting.material', 'lead_id', string="Furniture")
 
     def action_print_report(self):
-        return self.env.ref('yalla_wrapit.action_yallawrap_master_inspection_report').report_action(self)
+        return self.env.ref('safety_culture_erp.action_yallawrap_master_inspection_report').report_action(self)
 
     # ========================================
     # Labour Cost Fields
