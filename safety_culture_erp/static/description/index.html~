@@ -1,229 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Safety Culture ERP - Odoo Module</title>
+<title>Safety Culture ERP | Odoo Module</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    body{
-        font-family:Arial, sans-serif;
-        background:#f4f7fb;
-        color:#333;
-        line-height:1.6;
-    }
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f7fb;
+    color:#333;
+    line-height:1.7;
+}
 
-    /* =========================
-       TOP HERO SECTION
-    ========================== */
+/* ================= HERO ================= */
 
-    .hero{
-        background:linear-gradient(135deg,#714B67,#875A7B);
-        padding:90px 20px;
-        text-align:center;
-        color:white;
-        position:relative;
-        overflow:hidden;
-    }
+.hero{
+    background:linear-gradient(135deg,#714B67,#875A7B);
+    color:white;
+    padding:90px 20px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
 
-    .hero:before{
-        content:'';
-        position:absolute;
-        width:400px;
-        height:400px;
-        background:rgba(255,255,255,0.05);
-        border-radius:50%;
-        top:-150px;
-        right:-100px;
-    }
+.hero::before{
+    content:'';
+    position:absolute;
+    width:450px;
+    height:450px;
+    background:rgba(255,255,255,0.05);
+    border-radius:50%;
+    top:-180px;
+    right:-120px;
+}
 
-    .hero:after{
-        content:'';
-        position:absolute;
-        width:300px;
-        height:300px;
-        background:rgba(255,255,255,0.04);
-        border-radius:50%;
-        bottom:-120px;
-        left:-100px;
-    }
+.hero::after{
+    content:'';
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:rgba(255,255,255,0.04);
+    border-radius:50%;
+    bottom:-160px;
+    left:-120px;
+}
 
-    .hero-content{
-        position:relative;
-        z-index:2;
-    }
+.hero-content{
+    position:relative;
+    z-index:2;
+}
 
-    .icon-box{
-        display:inline-block;
-        background:white;
-        padding:14px;
-        border-radius:24px;
-        box-shadow:0 15px 35px rgba(0,0,0,0.25);
-        margin-bottom:25px;
-    }
+.logo-box{
+    display:inline-block;
+    background:white;
+    padding:14px;
+    border-radius:24px;
+    box-shadow:0 18px 35px rgba(0,0,0,0.25);
+    margin-bottom:25px;
+}
 
-    .icon-box img{
-        width:130px;
-        height:130px;
-        border-radius:18px;
-        display:block;
-    }
+.logo-box img{
+    width:130px;
+    height:130px;
+    border-radius:18px;
+    display:block;
+}
 
-    .hero h1{
-        font-size:42px;
-        margin-bottom:15px;
-        font-weight:700;
-    }
+.hero h1{
+    font-size:44px;
+    margin-bottom:15px;
+    font-weight:700;
+}
 
-    .line{
-        width:90px;
-        height:4px;
-        background:white;
-        margin:20px auto;
-        border-radius:10px;
-        opacity:0.8;
-    }
+.hero-line{
+    width:100px;
+    height:4px;
+    background:white;
+    margin:20px auto;
+    border-radius:10px;
+    opacity:0.8;
+}
 
-    .hero p{
-        max-width:950px;
-        margin:auto;
-        font-size:17px;
-        line-height:1.9;
-        opacity:0.95;
-    }
+.hero p{
+    max-width:950px;
+    margin:auto;
+    font-size:17px;
+    opacity:0.95;
+}
 
-    .badges{
-        margin-top:30px;
-    }
+.badges{
+    margin-top:30px;
+}
 
-    .badge{
-        display:inline-block;
-        background:rgba(255,255,255,0.15);
-        padding:8px 16px;
-        border-radius:25px;
-        margin:5px;
-        font-size:13px;
-        backdrop-filter:blur(5px);
-    }
+.badge{
+    display:inline-block;
+    background:rgba(255,255,255,0.15);
+    padding:8px 18px;
+    margin:5px;
+    border-radius:25px;
+    font-size:13px;
+    backdrop-filter:blur(5px);
+}
 
-    /* =========================
-       SECTION
-    ========================== */
+/* ================= SECTION ================= */
 
-    .section{
-        max-width:1150px;
-        margin:auto;
-        padding:70px 20px;
-    }
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 20px;
+}
 
-    .section-title{
-        text-align:center;
-        margin-bottom:45px;
-    }
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
 
-    .section-title h2{
-        font-size:32px;
-        color:#714B67;
-        margin-bottom:12px;
-    }
+.section-title h2{
+    font-size:34px;
+    color:#714B67;
+    margin-bottom:12px;
+}
 
-    .section-title p{
-        color:#666;
-        font-size:16px;
-    }
+.section-title p{
+    color:#666;
+    font-size:16px;
+}
 
-    /* =========================
-       CARDS
-    ========================== */
+/* ================= CARDS ================= */
 
-    .cards{
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-        gap:20px;
-    }
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
 
-    .card{
-        background:white;
-        border-radius:18px;
-        padding:25px;
-        box-shadow:0 4px 18px rgba(0,0,0,0.06);
-        transition:0.3s;
-    }
+.card{
+    background:white;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.06);
+    transition:0.3s;
+}
 
-    .card:hover{
-        transform:translateY(-6px);
-    }
+.card:hover{
+    transform:translateY(-7px);
+}
 
-    .card i{
-        font-size:28px;
-        color:#875A7B;
-        margin-bottom:15px;
-    }
+.card i{
+    font-size:32px;
+    color:#875A7B;
+    margin-bottom:18px;
+}
 
-    .card h3{
-        color:#714B67;
-        margin-bottom:12px;
-        font-size:20px;
-    }
+.card h3{
+    color:#714B67;
+    margin-bottom:12px;
+    font-size:21px;
+}
 
-    .card p{
-        color:#555;
-        font-size:14px;
-        line-height:1.7;
-    }
+.card p{
+    color:#555;
+    font-size:14px;
+}
 
-    /* =========================
-       FEATURES
-    ========================== */
+/* ================= FEATURES ================= */
 
-    .features{
-        background:white;
-        padding:70px 20px;
-    }
+.features{
+    background:white;
+    padding:80px 20px;
+}
 
-    .feature-box{
-        max-width:1100px;
-        margin:auto;
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-        gap:25px;
-    }
+.features-grid{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
 
-    .feature{
-        background:#f8f8fc;
-        border-left:5px solid #875A7B;
-        padding:22px;
-        border-radius:14px;
-    }
+.feature{
+    background:#f8f8fc;
+    padding:25px;
+    border-left:5px solid #875A7B;
+    border-radius:14px;
+}
 
-    .feature h4{
-        margin-bottom:10px;
-        color:#714B67;
-        font-size:18px;
-    }
+.feature h4{
+    color:#714B67;
+    margin-bottom:12px;
+    font-size:20px;
+}
 
-    /* =========================
-       FOOTER
-    ========================== */
+.feature p{
+    color:#555;
+}
 
-    footer{
-        background:#1f1f1f;
-        color:white;
-        text-align:center;
-        padding:25px;
-        margin-top:50px;
-    }
+/* ================= HIGHLIGHT ================= */
+
+.highlight{
+    background:linear-gradient(135deg,#875A7B,#714B67);
+    color:white;
+    padding:70px 20px;
+    text-align:center;
+}
+
+.highlight h2{
+    font-size:36px;
+    margin-bottom:20px;
+}
+
+.highlight p{
+    max-width:900px;
+    margin:auto;
+    font-size:17px;
+    opacity:0.95;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#1f1f1f;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
 
 </style>
 
@@ -237,22 +250,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
     <div class="hero-content">
 
-        <div class="icon-box">
+        <div class="logo-box">
             <img src="icon.png" alt="Safety Culture ERP">
         </div>
 
         <h1>🛡️ Safety Culture ERP</h1>
 
-        <div class="line"></div>
+        <div class="hero-line"></div>
 
         <p>
-            🚀 A modern and fully dynamic ERP solution designed for Sales Engineers,
-            combining BOQ-based estimation, intelligent project reporting,
-            and advanced engineering workflow management in one unified platform.
+            🚀 Modern ERP solution for Sales Engineers integrating BOQ estimation,
+            smart reporting, engineering workflows and project management
+            into one unified Odoo platform.
             <br><br>
-            🇫🇷 Module ERP moderne destiné aux ingénieurs commerciaux,
+            🇫🇷 Solution ERP moderne dédiée aux ingénieurs commerciaux,
             intégrant le chiffrage BOQ, le reporting intelligent
-            et la gestion multi-métiers des projets.
+            et la gestion avancée des projets.
         </p>
 
         <div class="badges">
@@ -273,7 +286,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
     <div class="section-title">
         <h2>🌐 Business Domains</h2>
-        <p>Complete engineering and project costing platform</p>
+        <p>Comprehensive engineering and project management ecosystem</p>
     </div>
 
     <div class="cards">
@@ -282,8 +295,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
             <i class="fa-solid fa-helmet-safety"></i>
             <h3>Sales Engineering</h3>
             <p>
-                Project lifecycle management, technical reporting,
-                quotation generation and engineering coordination.
+                Manage projects, quotations, technical reports
+                and engineering workflows efficiently.
             </p>
         </div>
 
@@ -291,8 +304,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
             <i class="fa-solid fa-kitchen-set"></i>
             <h3>Kitchen Solutions</h3>
             <p>
-                Custom kitchen design, BOQ calculation
-                and intelligent material selection.
+                Custom kitchen design, BOQ generation
+                and intelligent material management.
             </p>
         </div>
 
@@ -300,8 +313,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
             <i class="fa-solid fa-bath"></i>
             <h3>Bathroom Solutions</h3>
             <p>
-                Sanitary system design, equipment specification
-                and project cost estimation.
+                Sanitary planning, equipment configuration
+                and cost estimation system.
             </p>
         </div>
 
@@ -309,8 +322,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
             <i class="fa-solid fa-door-open"></i>
             <h3>Doors & Joinery</h3>
             <p>
-                Joinery management, door specifications
-                and production tracking workflow.
+                Door specifications, joinery management
+                and production follow-up tools.
             </p>
         </div>
 
@@ -318,8 +331,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
             <i class="fa-solid fa-border-all"></i>
             <h3>Flooring</h3>
             <p>
-                Surface calculation, flooring optimization
-                and material management system.
+                Surface calculations, flooring optimization
+                and engineering quantity management.
             </p>
         </div>
 
@@ -327,8 +340,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
             <i class="fa-solid fa-couch"></i>
             <h3>Furniture</h3>
             <p>
-                Custom furniture management,
-                catalogs and automated costing tools.
+                Furniture catalogs, custom designs
+                and automated costing solutions.
             </p>
         </div>
 
@@ -342,44 +355,59 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
     <div class="section-title">
         <h2>⚙️ Advanced Features</h2>
-        <p>Powerful tools for engineering and reporting</p>
+        <p>Powerful tools for engineering teams and project managers</p>
     </div>
 
-    <div class="feature-box">
+    <div class="features-grid">
 
         <div class="feature">
             <h4>📊 Dynamic Reporting</h4>
             <p>
-                Generate intelligent inspection reports
-                and advanced project analytics in real time.
+                Generate intelligent inspection reports,
+                project analytics and real-time dashboards.
             </p>
         </div>
 
         <div class="feature">
             <h4>🧮 BOQ Integration</h4>
             <p>
-                Automatic quantity calculation and
-                engineering cost estimation engine.
+                Automatic quantity calculations
+                and engineering cost estimation engine.
             </p>
         </div>
 
         <div class="feature">
             <h4>📁 Project Management</h4>
             <p>
-                Centralized project workflow with
-                engineering follow-up and task monitoring.
+                Centralized engineering workflow,
+                task tracking and project follow-up.
             </p>
         </div>
 
         <div class="feature">
             <h4>📈 Smart Dashboards</h4>
             <p>
-                Interactive dashboards and KPI tracking
-                for sales engineers and managers.
+                Interactive KPI dashboards for
+                sales engineers and management teams.
             </p>
         </div>
 
     </div>
+
+</section>
+
+<!-- ================= HIGHLIGHT ================= -->
+
+<section class="highlight">
+
+    <h2>🚀 Intelligent Engineering Platform</h2>
+
+    <p>
+        Safety Culture ERP transforms engineering operations
+        into a smart, centralized and scalable ecosystem,
+        helping organizations optimize reporting,
+        estimation and project execution workflows.
+    </p>
 
 </section>
 
