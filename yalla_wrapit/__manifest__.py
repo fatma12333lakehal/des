@@ -1,5 +1,5 @@
 {
-    'name': 'Safety Culture ERP',
+    'name': 'Safety Culture ERP TOP',
     'version': '1.0',
     'category': 'Project/Engineering',
     'summary': 'Dynamic Inspection Report for Sales Engineers',
